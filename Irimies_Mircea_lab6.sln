@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoLotModel", "AutoLotModel\AutoLotModel.csproj", "{82012579-657A-44A1-A882-1CBD4958F9EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irimies_Mircea_Lab6", "Irimies_Mircea_Lab6\Irimies_Mircea_Lab6.csproj", "{CFA5F3E5-6555-48DD-81CE-4AFB37BE662A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82012579-657A-44A1-A882-1CBD4958F9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82012579-657A-44A1-A882-1CBD4958F9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82012579-657A-44A1-A882-1CBD4958F9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82012579-657A-44A1-A882-1CBD4958F9EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA5F3E5-6555-48DD-81CE-4AFB37BE662A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA5F3E5-6555-48DD-81CE-4AFB37BE662A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA5F3E5-6555-48DD-81CE-4AFB37BE662A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA5F3E5-6555-48DD-81CE-4AFB37BE662A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43382766-0385-4E06-B706-32786EE7D3C0}
+	EndGlobalSection
+EndGlobal

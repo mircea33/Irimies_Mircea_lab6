@@ -28,9 +28,7 @@ namespace Irimies_Mircea_Lab6
     public partial class MainWindow : Window
     {
         ActionState action = ActionState.Nothing;
-
         AutoLotEntitiesModel ctx = new AutoLotEntitiesModel();
-        AutoLotEntitiesModel itx = new AutoLotEntitiesModel();
         CollectionViewSource customerViewSource;
         CollectionViewSource inventoryViewSource;
         CollectionViewSource customerOrdersViewSource;
@@ -47,29 +45,27 @@ namespace Irimies_Mircea_Lab6
             customerViewSource.Source = ctx.Customers.Local;
             inventoryViewSource =
             ((System.Windows.Data.CollectionViewSource)this.FindResource("inventoryViewSource"));
-            inventoryViewSource.Source = itx.Inventories.Local;
+            inventoryViewSource.Source = ctx.Inventories.Local;
             customerOrdersViewSource =
 ((System.Windows.Data.CollectionViewSource)(this.FindResource("customerOrdersViewSource")));
             customerOrdersViewSource.Source = ctx.Orders.Local;
             ctx.Customers.Load();
-            itx.Inventories.Load();
+            ctx.Inventories.Load();
             ctx.Orders.Load();
-           /// cmbCustomers.ItemsSource = ctx.Customers.Local;
+            ///cmbCustomers.ItemsSource = ctx.Customers.Local;
            // cmbCustomers.DisplayMemberPath = "FirstName";
             cmbCustomers.SelectedValuePath = "CustId";
-            cmbInventory.ItemsSource = itx.Inventories.Local;
+            cmbInventory.ItemsSource = ctx.Inventories.Local;
            // cmbInventory.DisplayMemberPath = "Make";
             cmbInventory.SelectedValuePath = "CarId";
-            
             BindDataGrid();
         }
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
             action = ActionState.New;
-
             BindingOperations.ClearBinding(firstNameTextBox, TextBox.TextProperty);
             BindingOperations.ClearBinding(lastNameTextBox, TextBox.TextProperty);
-            custIdTextBox.IsEnabled = true;
+            custIdTextBox.IsEnabled = false;
             firstNameTextBox.IsEnabled = true;
             lastNameTextBox.IsEnabled = true;
             btnNew.IsEnabled = false;
@@ -219,7 +215,7 @@ namespace Irimies_Mircea_Lab6
             action = ActionState.New;
             BindingOperations.ClearBinding(colorTextBox, TextBox.TextProperty);
             BindingOperations.ClearBinding(makeTextBox, TextBox.TextProperty);
-            carIdTextBox.IsEnabled = true;
+            carIdTextBox.IsEnabled = false;
             colorTextBox.IsEnabled = true;
             lastNameTextBox.IsEnabled = true;
             btnNewInventory.IsEnabled = false;
@@ -293,10 +289,10 @@ namespace Irimies_Mircea_Lab6
                         Make = makeTextBox.Text.Trim()
                     };
                     //adaugam entitatea nou creata in context
-                    itx.Inventories.Add(inventory);
+                    ctx.Inventories.Add(inventory);
                     inventoryViewSource.View.Refresh();
                     //salvam modificarile
-                    itx.SaveChanges();
+                    ctx.SaveChanges();
                 }
                 catch (DataException ex)
                 {
@@ -335,17 +331,15 @@ namespace Irimies_Mircea_Lab6
                 btnCancelInventory.IsEnabled = false;
                 btnPrevInventory.IsEnabled = true;
                 btnNextInventory.IsEnabled = true;
-
             }
-
             else
             if (action == ActionState.Delete)
             {
                 try
                 {
-                    inventory = (Inventory)customerDataGrid.SelectedItem;
-                    itx.Inventories.Remove(inventory);
-                    itx.SaveChanges();
+                    inventory = (Inventory)inventoryDataGrid.SelectedItem;
+                    ctx.Inventories.Remove(inventory);
+                    ctx.SaveChanges();
 
                 }
                 catch (DataException ex)
@@ -369,7 +363,7 @@ namespace Irimies_Mircea_Lab6
             action = ActionState.New;
             BindingOperations.ClearBinding(carIdTextBox1, TextBox.TextProperty);
             BindingOperations.ClearBinding(custIdTextBox1, TextBox.TextProperty);
-            carIdTextBox.IsEnabled = true;
+            carIdTextBox.IsEnabled = false;
             colorTextBox.IsEnabled = true;
             lastNameTextBox.IsEnabled = true;
             btnNewInventory.IsEnabled = false;
